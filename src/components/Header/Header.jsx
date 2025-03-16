@@ -13,8 +13,9 @@ const Header = ({dispatch}) => {
 
   return (
     <div className={style.header}>
+        <button className={style.butt} onClick={() => API.getAll(dispatch)}>All</button>
         {
-        reg.map((r) => <button key={r} onClick={() => filterReg(r)}>{r}</button>)
+        reg.map((r) => <button className={style.butt} key={r} onClick={() => filterReg(r)}>{r}</button>)
         }
         <>
         <input />

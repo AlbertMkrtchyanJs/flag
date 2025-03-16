@@ -12,17 +12,19 @@ function App() {
 
 const [state,dispatch] = useReducer(reducer,initialState)
 
+console.log(state);
+
 useEffect(() => {
  API.getAll(dispatch)
 },[])
 
   return (
-    <>
+    <div className='vzgo'>
     <Header dispatch={dispatch}/>
       <Routes>
         <Route path='/' element={<Home state ={state} />}/>
       </Routes>
-    </>
+    </div>
   )
 }
 
