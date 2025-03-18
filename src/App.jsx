@@ -17,7 +17,7 @@ function App({reg}) {
 
 const [state,dispatch] = useReducer(reducer,initialState)
 
-console.log(state);
+
 
 useEffect(() => {
  API.getAll(dispatch)
@@ -26,17 +26,21 @@ useEffect(() => {
   return (
     <div className='vzgo'>
     <MyContext.Provider value={{
-      reg: reg,
+       reg,
       dispatch,
-      countries : state.countries
+      countries : state.countries,
+      country: state.country,
+      text : state.text,
+      search : state.search
     }}>
       <Routes>
-        <Route path='/' element={<Layout/> }/>
+        <Route path='/' element={<Layout/> }>
         <Route index element={<Home/> }/>
         <Route path='/flag/:name' element={<Country/>}/>
+        </Route>
       </Routes>
     </MyContext.Provider>
-     <Header dispatch={dispatch}/>
+  
     </div>
   )
 }
