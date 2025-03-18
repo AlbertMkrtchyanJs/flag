@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getAllAC, getRegAC } from '../store/store'
+import { getAllAC, getRegAC,getCountryAC} from '../store/store'
 
 const instance = axios.create({
     baseURL : 'https://restcountries.com/v3.1'
@@ -13,5 +13,9 @@ export const API = {
     getRegion(dispatch,region){
         instance.get(`/region/${region}`)
         .then((res) => dispatch(getRegAC(res.data)))
+    },
+    getCountry(dispatch,name){
+        instance.get(`/name/${name}`)
+        .then((res)=> dispatch(getCountryAC(res.data)))
     }
 }
